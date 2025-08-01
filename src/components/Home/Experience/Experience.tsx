@@ -1,6 +1,5 @@
 import SectionHeading from '@/components/ui/SectionHeading';
 import experiences from '@/constants/experiences';
-import React from 'react';
 
 const Experience = () => {
   return (
@@ -14,7 +13,7 @@ const Experience = () => {
         {experiences.map((exp, i) => (
           <div
             key={i}
-            className="bg-slate-900 shadow-lg rounded-lg p-8 hover:shadow-xl transition-shadow duration-300"
+            className="bg-slate-950 shadow-lg rounded-lg p-8 hover:shadow-xl transition-shadow duration-300"
           >
             <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
             <p className="text-md text-white/90">{exp.company}</p>

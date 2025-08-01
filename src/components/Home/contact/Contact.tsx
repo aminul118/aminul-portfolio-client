@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
-import SectionHeading from '../../common/SectionHeading';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const Contact = () => {
   return (

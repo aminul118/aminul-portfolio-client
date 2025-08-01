@@ -1,4 +1,4 @@
-import { TAbout, THobby } from '../types/types';
+import { TAbout, THobby } from '@/types';
 import { BiFootball } from 'react-icons/bi';
 import { FaCameraRetro, FaPlaneDeparture } from 'react-icons/fa';
 import { GiFullMotorcycleHelmet } from 'react-icons/gi';

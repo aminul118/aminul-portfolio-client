@@ -1,22 +1,6 @@
-import {
-  FaReact,
-  FaGithub,
-  FaNodeJs,
-  FaCss3Alt,
-  FaHtml5,
-} from 'react-icons/fa';
-import {
-  SiExpress,
-  SiMongodb,
-  SiMongoose,
-  SiPrisma,
-  SiTailwindcss,
-} from 'react-icons/si';
-import {
-  BiLogoJavascript,
-  BiLogoPostgresql,
-  BiLogoTypescript,
-} from 'react-icons/bi';
+import { FaReact, FaGithub, FaNodeJs, FaCss3Alt, FaHtml5 } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiMongoose, SiPrisma, SiTailwindcss } from 'react-icons/si';
+import { BiLogoJavascript, BiLogoPostgresql, BiLogoTypescript } from 'react-icons/bi';
 import { RiFirebaseFill } from 'react-icons/ri';
 import { TbBrandNextjs, TbBrandRedux } from 'react-icons/tb';
 import { LiaGit } from 'react-icons/lia';

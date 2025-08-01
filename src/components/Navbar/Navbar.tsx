@@ -26,11 +26,7 @@ const navItems = [
   },
   {
     title: 'Projects',
-    href: '/projects',
-  },
-  {
-    title: 'Blogs',
-    href: '/blogs',
+    href: '/#projects',
   },
   {
     title: 'Contact',
@@ -42,7 +38,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#050B16]">
+    <header className="bg-slate-800 fixed w-full z-50">
       <nav className="w-full px-2 md:px-0  py-4 container mx-auto text-white flex items-center justify-between sticky top-0 z-50">
         {/* Left: Logo */}
         <AminulLogo />

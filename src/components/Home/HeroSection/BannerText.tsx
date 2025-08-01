@@ -20,8 +20,8 @@ const BannerText = () => {
         />
       </h1>
       <p>
-        Creative front-end developer with Proficient in JavaScript, TypeScript,
-        React, Next js, MongoDB, Node JS. Passionate about programming.
+        Creative front-end developer with Proficient in JavaScript, TypeScript, React, Next js,
+        MongoDB, Node JS. Passionate about programming.
       </p>
       <Logo />
       <DownloadResume />

@@ -3,7 +3,7 @@ import BannerText from './BannerText';
 
 const HeroBanner = () => {
   return (
-    <section className="bg-slate-900 pt-12 lg:pt-20">
+    <section className=" pt-12 lg:pt-32">
       <div className="flex flex-col lg:flex-row justify-between container mx-auto px-2">
         <div className="max-w-2xl">
           <BannerText />

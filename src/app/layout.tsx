@@ -3,6 +3,7 @@ import './globals.css';
 import ThemeProvider from '@/providers/ThemeProvider';
 import { spaceGrotesk } from '@/lib/fonts';
 import AosProvider from '@/providers/AosProvider';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,6 +30,7 @@ const MainLayout = ({
               {children}
             </ThemeProvider>
           </AosProvider>
+          <Toaster />
         </body>
       </html>
     </>
