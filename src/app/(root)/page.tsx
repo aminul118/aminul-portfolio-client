@@ -9,7 +9,7 @@ import Skills from '@/components/Home/Skills/Skills';
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <HeroBanner />
       <About />
       <Skills />
@@ -18,7 +18,7 @@ const HomePage = () => {
       <Experience />
       <Projects />
       <Contact />
-    </div>
+    </>
   );
 };
 

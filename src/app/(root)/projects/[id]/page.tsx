@@ -15,7 +15,9 @@ const page = async ({ params }: TParams) => {
   const { id } = await params;
   const numericId = Number(id);
 
-  const data = AllProjects.filter((project: IProjects) => project.id === numericId);
+  const data = AllProjects.filter(
+    (project: IProjects) => project.id === numericId,
+  );
   console.log(data);
 
   return (

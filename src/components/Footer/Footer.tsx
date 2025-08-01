@@ -5,7 +5,7 @@ import Logo from '../common/Logo';
 
 const Footer = () => {
   return (
-    <footer className=" bg-slate-950 flex flex-col items-center gap-3 p-10">
+    <footer className=" bg-slate-900 flex flex-col items-center gap-3 p-10 text-primary/80">
       <Image
         src="/logo.svg"
         width={60}
@@ -18,7 +18,10 @@ const Footer = () => {
         <p className="text-3xl font-semibold">Aminul</p>
         <Logo flexAlign="justify-center" />
 
-        <p>Copyright © {new Date().getFullYear()} - All right reserved by Md. Aminul Islam</p>
+        <p>
+          Copyright © {new Date().getFullYear()} - All right reserved by Md.
+          Aminul Islam
+        </p>
       </div>
     </footer>
   );

@@ -20,7 +20,9 @@ const RootLayout = ({ children }: Children) => {
   return (
     <div>
       <Navbar />
-      <div className="min-h-[calc(100vh-336px)]">{children}</div>
+      <div className="min-h-[calc(100vh-336px)] pt-[60px] 2xl:pt-[70px]">
+        {children}
+      </div>
       <Footer />
     </div>
   );

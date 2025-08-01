@@ -1,7 +1,6 @@
 'use client';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import AminulLogo from '../common/AminulLogo';
 
@@ -14,12 +13,10 @@ const navItems = [
     title: 'About',
     href: '/#about',
   },
-
   {
     title: 'Skills',
     href: '/#skills',
   },
-
   {
     title: 'Experience',
     href: '/#experience',
@@ -38,8 +35,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-slate-800 fixed w-full z-50">
-      <nav className="w-full px-2 md:px-0  py-4 container mx-auto text-white flex items-center justify-between sticky top-0 z-50">
+    <header className="bg-slate-900 fixed top-0 left-0 w-full z-50 shadow-md">
+      <nav className="w-full px-2 md:px-0 py-4 container mx-auto text-white flex items-center justify-between">
         {/* Left: Logo */}
         <AminulLogo />
 

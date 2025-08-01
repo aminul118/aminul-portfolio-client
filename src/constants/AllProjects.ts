@@ -74,31 +74,6 @@ const AllProjects: IProjects[] = [
     ],
     tech: ['Next.js', 'Tailwind', 'Firebase', 'Node.js'],
   },
-  // {
-  //   id: 4,
-  //   project_name: "Smart Healthcare and Research Ltd.",
-  //   project_img: "/assets/projects/shrlbd.png",
-  //   portal_img: "/assets/projects/shrlbd-portal.png",
-  //   liveLink: "https://www.shrlbd.com",
-
-  //   about:
-  //     "Smart Healthcare and Research Ltd. (SHRL) is a healthcare technology company based in Bangladesh, dedicated to enhancing healthcare delivery through innovative digital solutions. Their platform, serves as a comprehensive portal for patients, doctors, and healthcare institutions, facilitating seamless interaction and service delivery.​",
-  //   features: [
-  //     "Admin: Add and delete Upcoming Events to manage health campaigns or awareness programs.",
-  //     "Admin: Create and remove Event banners or featured content for the homepage.",
-  //     "Admin: Add and update Scrolling Text (Marquee) for real-time announcements or alerts.",
-  //   ],
-
-  //   tech: [
-  //     "Next.js",
-  //     "React js",
-  //     "Shadcn",
-  //     "Tailwind",
-  //     "Firebase",
-  //     "Node.js",
-  //     "Mongoose",
-  //   ],
-  // },
 ];
 
 export default AllProjects;

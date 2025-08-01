@@ -52,8 +52,13 @@ const ContactForm = () => {
 
   return (
     <div className=" p-6 rounded-lg w-full mx-auto mt-6" data-aos="fade-left">
-      <h2 className="text-2xl font-bold mb-4 text-center">Contact Me</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-lg mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-center text-primary/80">
+        Contact Me
+      </h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4 max-w-lg mx-auto"
+      >
         {/* Name Field */}
         <div>
           <Input
@@ -62,7 +67,9 @@ const ContactForm = () => {
             placeholder="Your Name"
             className="w-full p-2 px-4 border rounded bg-slate-800 border-none"
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+          {errors.name && (
+            <p className="text-red-500 text-sm">{errors.name.message}</p>
+          )}
         </div>
 
         {/* Email Field */}
@@ -79,7 +86,9 @@ const ContactForm = () => {
             placeholder="Your Email"
             className="w-full p-2 px-4 border rounded bg-slate-800 border-none"
           />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
         </div>
 
         {/* Message Field */}
@@ -89,7 +98,9 @@ const ContactForm = () => {
             placeholder="Your Message"
             className="w-full p-2 px-4 border rounded h-24 bg-slate-800 border-none resize-none"
           ></Textarea>
-          {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message.message}</p>
+          )}
         </div>
 
         {/* Submit Button */}
