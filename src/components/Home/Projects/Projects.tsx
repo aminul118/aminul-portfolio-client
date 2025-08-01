@@ -38,7 +38,7 @@ const Projects = () => {
                 <Image
                   src={project_img}
                   width={600}
-                  height={300}
+                  height={0}
                   alt={project_name}
                   className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                   priority={true}

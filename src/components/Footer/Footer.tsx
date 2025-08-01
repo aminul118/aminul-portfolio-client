@@ -18,7 +18,7 @@ const Footer = () => {
         <p className="text-3xl font-semibold">Aminul</p>
         <Logo flexAlign="justify-center" />
 
-        <p>
+        <p className="text-sm mt-8">
           Copyright © {new Date().getFullYear()} - All right reserved by Md.
           Aminul Islam
         </p>
