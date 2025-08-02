@@ -1,6 +1,6 @@
 import AboutImage from '@/components/Home/About/AboutImage';
 import { aboutMe, hobbies } from '@/constants/aboutMe';
-import { generateMetaTags } from '@/Seo/genarateMetaTags';
+import { generateMetaTags } from '@/SEO/genarateMetaTags';
 import { Metadata } from 'next';
 
 // >> SEO Start

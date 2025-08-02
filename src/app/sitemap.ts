@@ -1,8 +1,8 @@
-import { staticRoutes } from '@/Seo/staticRoutes';
+import { staticRoutes } from '@/SEO/staticRoutes';
 import { Routes } from '@/types';
 import type { MetadataRoute } from 'next';
 
-const baseUrl = 'https://www.a1-lifts.com';
+const baseUrl = 'https://www.aminuldev.site';
 const lastModified = new Date();
 
 const generateSitemapEntries = (routes: Routes[]): MetadataRoute.Sitemap => {

@@ -1,5 +1,5 @@
 import AllProjects from '@/constants/AllProjects';
-import { generateMetaTags } from '@/Seo/genarateMetaTags';
+import { generateMetaTags } from '@/SEO/genarateMetaTags';
 import { IProjects, TParams } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
