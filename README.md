@@ -1,1 +1,1 @@
-![Portfolio Banner](portfolio-site.png)
+![Portfolio Banner](./public/portfolio-site.png)
