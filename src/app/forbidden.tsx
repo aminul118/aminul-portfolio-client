@@ -1,20 +1,22 @@
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Ban } from 'lucide-react';
-import SectionHeading from '@/components/ui/SectionHeading';
+import Link from 'next/link';
 
 const Forbidden = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
-      <Ban size={80} className="text-destructive mb-6" />
-      <SectionHeading
-        heading="Access Denied"
-        description=" You are not authorized to access this page."
-      />
-      <Button variant="outline" asChild>
-        <Link href="/">Go back home</Link>
-      </Button>
-    </div>
+    <section className="grid min-h-screen place-items-center">
+      <Card className="w-full max-w-lg p-16">
+        <CardContent className="text-center">
+          <Ban size={80} className="text-destructive mx-auto" />
+          <h1 className="text-2xl mt-4">Access Denied</h1>
+          <p className="mb-4">You do not have permission to view this page.</p>
+          <Button asChild>
+            <Link href="/">Go back home</Link>
+          </Button>
+        </CardContent>
+      </Card>
+    </section>
   );
 };
 
