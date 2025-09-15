@@ -10,6 +10,7 @@ import {
   SiMongodb,
   SiMongoose,
   SiPrisma,
+  SiRedis,
   SiTailwindcss,
 } from 'react-icons/si';
 import {
@@ -31,6 +32,11 @@ const skillsData = [
     icon: <FaCss3Alt className="text-blue-600" />,
     name: 'CSS',
     gradient: 'from-blue-600 via-blue-500 to-indigo-500',
+  },
+  {
+    icon: <SiTailwindcss className="text-blue-500" />,
+    name: 'Tailwind',
+    gradient: 'from-blue-400 via-teal-400 to-cyan-400',
   },
 
   {
@@ -58,11 +64,7 @@ const skillsData = [
     name: 'Redux',
     gradient: 'from-purple-800 via-purple-700 to-purple-400',
   },
-  {
-    icon: <SiTailwindcss className="text-blue-500" />,
-    name: 'Tailwind',
-    gradient: 'from-blue-400 via-teal-400 to-cyan-400',
-  },
+
   {
     icon: <FaNodeJs className="text-green-500" />,
     name: 'Node.js',
@@ -79,7 +81,7 @@ const skillsData = [
     gradient: 'from-green-700 via-green-600 to-lime-500',
   },
   {
-    icon: <SiMongoose className="text-red-600" />,
+    icon: <SiMongoose className="text-red-500" />,
     name: 'Mongoose',
     gradient: 'from-red-700 via-red-600 to-orange-500',
   },
@@ -92,6 +94,11 @@ const skillsData = [
     icon: <SiPrisma className="text-white" />,
     name: 'Prisma',
     gradient: 'from-gray-800 via-gray-700 to-gray-600',
+  },
+  {
+    icon: <SiRedis className="text-red-500" />,
+    name: 'Redis',
+    gradient: 'from-red-700 via-red-600 to-orange-500',
   },
   {
     icon: <RiFirebaseFill className="text-yellow-500" />,

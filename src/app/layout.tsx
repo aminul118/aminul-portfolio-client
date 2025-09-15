@@ -1,11 +1,11 @@
 import './globals.css';
 import ThemeProvider from '@/providers/ThemeProvider';
-import { spaceGrotesk } from '@/lib/fonts';
 import AosProvider from '@/providers/AosProvider';
 import { Toaster } from 'sonner';
 import { Metadata } from 'next';
 import { IChildren } from '@/types';
 import generateMetaTags from '@/Seo/generateMetaTags';
+import fonts from '@/config/fonts.config';
 
 // >> SEO Start
 export const metadata: Metadata = generateMetaTags({
@@ -20,7 +20,7 @@ export const metadata: Metadata = generateMetaTags({
 const MainLayout = ({ children }: IChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={spaceGrotesk.className}>
+      <body className={fonts.spaceGrotesk.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

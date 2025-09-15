@@ -41,7 +41,7 @@ const Navbar = () => {
         <AminulLogo />
 
         {/* Middle: Nav Links (Desktop) */}
-        <ul className="hidden md:flex space-x-6 text-sm font-medium text-gray-300">
+        <ul className="hidden md:flex space-x-6 text-sm  text-gray-300">
           {navItems.map(({ title, href }) => (
             <li key={title}>
               <Link href={href} className="hover:primary/80 transition-colors">

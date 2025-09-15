@@ -4,7 +4,7 @@ import {
   SiAdobephotoshop,
   SiAdobeillustrator,
   SiAdobepremierepro,
-  SiAdobeaudition,
+  SiGoogletagmanager,
 } from 'react-icons/si';
 
 const othersSkillsData = [
@@ -23,6 +23,11 @@ const othersSkillsData = [
     name: 'Google Analytics',
     gradient: 'from-yellow-500 via-orange-500 to-red-500',
   },
+  {
+    icon: <SiGoogletagmanager className="text-blue-500" />,
+    name: 'Google Tag Manager',
+    gradient: 'from-blue-500 via-cyan-500 to-green-400',
+  },
 
   {
     icon: <SiAdobephotoshop className="text-blue-600" />,
@@ -34,11 +39,7 @@ const othersSkillsData = [
     name: 'Illustrator',
     gradient: 'from-yellow-600 via-orange-600 to-red-500',
   },
-  {
-    icon: <SiAdobeaudition className="text-green-500" />,
-    name: 'Audition',
-    gradient: 'from-green-500 via-teal-600 to-blue-500',
-  },
+
   {
     icon: <SiAdobepremierepro className="text-purple-700" />,
     name: 'Premiere Pro',
