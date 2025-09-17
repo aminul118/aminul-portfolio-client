@@ -1,5 +1,5 @@
 import Footer from '@/components/layouts/Footer/Footer';
-import Navbar from '@/components/Navbar/Navbar';
+import Navbar from '@/components/layouts/Navbar/Navbar';
 
 import { IChildren } from '@/types';
 

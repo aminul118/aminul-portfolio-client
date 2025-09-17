@@ -18,11 +18,12 @@ const About = () => {
           </p>
           <ul className="list-disc list-inside mt-3">
             <li>
-              Frontend: HTML, CSS, Tailwind, JavaScript, TypeScript, React JS,
-              Next JS
+              Frontend: JavaScript, TypeScript, React JS, Next JS, Redux,
+              Tailwind, Shadcn
             </li>
-            <li>Backend: Node JS, Express, Firebase</li>
-            <li>Databases: MongoDB</li>
+            <li>Backend: Node JS, Express</li>
+            <li>Databases: MongoDB, MySQL, Postgresql</li>
+            <li>ORM: Mongoose, Prisma</li>
           </ul>
           <p className="mt-3">
             I focus on creating intuitive user experiences and developing
