@@ -1,14 +1,29 @@
 import React from 'react';
+export type { MenuGroup } from './admin-menu';
 export type { MetaProps, Routes } from './meta.types';
-export type { IChildren, IGlobalError, IParams } from './react.types';
+export type {
+  DivProps,
+  ElementProps,
+  IChildren,
+  IGlobalError,
+  IParams,
+  ISearchParams,
+  SectionProps,
+} from './react.types';
 
+export interface IMeta {
+  page: number;
+  limit: number;
+  total: number;
+  totalPage: number;
+}
 export interface ApiResponse<T> {
+  message: string;
   statusCode: number;
   success: boolean;
-  message: string;
   data: T;
+  meta?: IMeta;
 }
-
 export type TAbout = {
   title: string;
   paragraphs: string[];
