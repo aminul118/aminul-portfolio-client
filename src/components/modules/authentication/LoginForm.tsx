@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { loginUser } from '@/actions/auth';
+import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,22 +18,28 @@ import { Input } from '@/components/ui/input';
 import Password from '@/components/ui/password';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
+import { Role } from '@/types';
 import { loginFormValidation } from '@/validations/auth';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
 const LoginForm = ({ className }: { className?: string }) => {
+  const [isLoading, setLoading] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams(); // ✅ read query params
+  const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
+  console.log(callbackUrl);
 
-  const form = useForm<z.infer<typeof loginFormValidation>>({
+  type FormType = z.infer<typeof loginFormValidation>;
+
+  const form = useForm<FormType>({
     resolver: zodResolver(loginFormValidation),
     defaultValues: {
       email: '',
@@ -39,43 +47,39 @@ const LoginForm = ({ className }: { className?: string }) => {
     },
   });
 
-  // const onSubmit = async (data: z.infer<typeof loginFormValidation>) => {
-  //   try {
-  //     toast.success(res.message || 'User login successfully');
-  //     console.log('RES==>', res);
+  const onSubmit = async (data: FormType) => {
+    setLoading(true);
+    try {
+      const res = await loginUser(data);
+      // console.log(res);
+      if (res.success && res.statusCode === 200) {
+        toast.success(res.message);
+        setLoading(false);
 
-  //     if (res?.data?.user?.role === Role.ADMIN) {
-  //       router.push(callbackUrl || '/admin');
-  //     } else if (res?.data?.user?.role === Role.USER) {
-  //       router.push(callbackUrl || '/user');
-  //     } else {
-  //       router.push('/');
-  //     }
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   } catch (error: any) {
-  //     console.log('ERR=>', error);
-  //     if (error.status === 401) {
-  //       toast.error('Email or password Incorrect');
-  //     }
-  //     if (error.status === 400) {
-  //       toast.error('Email or password Incorrect');
-  //     }
-  //     if (error.status === 900) {
-  //       router.push(`/verify?email=${data.email}`);
-  //       toast.error('You are not verified User. ');
-  //     }
-  //   }
-  // };
-
-  const onSubmit = async (data: z.infer<typeof loginFormValidation>) => {
-    const res = await loginUser(data);
-    console.log(res);
-    if (res.success) {
-      toast.success(res.message);
-      console.log(res);
-    }
-    if (!res.success) {
-      toast.error(res.message);
+        if (res?.data?.user?.role === Role.ADMIN) {
+          router.push(callbackUrl || '/admin');
+        } else if (res?.data?.user?.role === Role.USER) {
+          router.push(callbackUrl || '/user');
+        } else {
+          router.push('/');
+        }
+      }
+      if (!res.success) {
+        toast.error(res.message);
+      }
+    } catch (error: any) {
+      // console.log(error);
+      setLoading(false);
+      if (error.status === 401) {
+        toast.error('Email or password Incorrect');
+      }
+      if (error.status === 400) {
+        toast.error('Email or password Incorrect');
+      }
+      if (error.status === 900) {
+        router.push(`/verify?email=${data.email}`);
+        toast.error('You are not verified User. ');
+      }
     }
   };
 
@@ -144,7 +148,13 @@ const LoginForm = ({ className }: { className?: string }) => {
                   )}
                 />
                 <Button type="submit" className="w-full">
-                  Login
+                  {isLoading ? (
+                    <>
+                      <ButtonSpinner /> Login
+                    </>
+                  ) : (
+                    'Login'
+                  )}
                 </Button>
               </form>
 

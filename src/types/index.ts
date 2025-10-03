@@ -54,3 +54,9 @@ export interface IProjects {
   features: string[];
   tech: string[];
 }
+
+export enum Role {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+}

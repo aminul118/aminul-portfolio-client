@@ -18,6 +18,7 @@ import images from '@/config/images';
 import { cn } from '@/lib/utils';
 
 import { registerUser } from '@/actions/auth';
+import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
 import { registrationFormValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
@@ -52,24 +53,27 @@ const RegisterForm = ({ className }: { className?: string }) => {
   });
 
   const onSubmit = async (data: z.infer<typeof registrationFormValidation>) => {
-    // const { firstName, lastName, email, phone, password } = data;
-    // const payload = {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   phone,
-    //   password,
-    // };
-
-    const res = await registerUser(data);
+    const { firstName, lastName, email, phone, password } = data;
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+    };
+    setLoading(true);
+    const res = await registerUser(payload);
+    console.log(res);
     if (res?.success) {
       if (res?.statusCode === 201) {
         router.push(`/verify?email${data.email}`);
       }
       toast.success(res?.message);
+      setLoading(false);
     }
     if (!res.success) {
       toast.error(res?.message);
+      setLoading(false);
     }
   };
 
@@ -212,7 +216,13 @@ const RegisterForm = ({ className }: { className?: string }) => {
                   className="w-full"
                   disabled={!form.formState.isValid}
                 >
-                  Submit
+                  {loading ? (
+                    <>
+                      <ButtonSpinner /> Login
+                    </>
+                  ) : (
+                    'Login'
+                  )}
                 </Button>
               </form>
             </Form>
