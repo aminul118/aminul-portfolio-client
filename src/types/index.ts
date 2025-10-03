@@ -11,14 +11,6 @@ export type {
   SectionProps,
 } from './react.types';
 
-export type {
-  IAiTraining,
-  IEvent,
-  IScrollingText,
-  ITeamMember,
-  IUpcomingEvent,
-} from './apiData.types';
-
 export interface IMeta {
   page: number;
   limit: number;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import envVars from '@/config/env.config';
-import axios from 'axios';
 import { revalidateTag } from 'next/cache';
+
 export interface IApiParams {
   [key: string]: string | number | undefined;
 }
@@ -14,85 +14,46 @@ export interface IFetchOptions {
   };
 }
 
-export const apiGet = async <T>(
-  endpoint: string,
-  params: IApiParams = {},
-  fetchOptions: IFetchOptions = {
-    cache: 'force-cache',
-  },
-): Promise<T> => {
-  const query = new URLSearchParams();
+export interface ApiGetOptions {
+  path: string;
+  params?: IApiParams;
+  fetchOptions?: IFetchOptions;
+}
 
+export const apiGet = async <T>({
+  path,
+  params = {},
+  fetchOptions = { cache: 'force-cache' },
+}: ApiGetOptions): Promise<T> => {
+  // Convert params object to query string
+  const query = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== '') {
       query.append(key, String(value));
     }
   });
 
-  const convertQuery = query.toString();
+  const queryString = query.toString();
+  const url = `${envVars.baseUrl}${path}${queryString ? `?${queryString}` : ''}`;
 
-  const url = `${envVars.baseUrl}${endpoint}${
-    convertQuery ? `?${convertQuery}` : ''
-  }`;
-
+  // Fetch API
   const res = await fetch(url, {
     ...fetchOptions,
   });
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch ${endpoint}: ${res.status}`);
+    throw new Error(`Failed to fetch ${path}: ${res.status}`);
   }
 
-  return res.json() as Promise<T>;
-};
+  const data = (await res.json()) as T;
 
-export const apiDelete = async <T>({
-  endpoint,
-  tag,
-}: {
-  endpoint: string;
-  tag?: string;
-}): Promise<T> => {
-  try {
-    const res = await axios.delete<T>(`${envVars.baseUrl}${endpoint}`);
-
-    // revalidate cache for fresh UI
-    if (tag) {
-      revalidateTag(tag);
-    }
-
-    return res.data;
-  } catch (error: any) {
-    throw new Error(
-      `DELETE /${endpoint} failed ==> ${error.response?.status || error.message}`,
-    );
+  // Revalidate tags if provided
+  if (fetchOptions.next?.tags) {
+    fetchOptions.next.tags.forEach((tag) => revalidateTag(tag));
   }
+
+  return data;
 };
-
-interface ApiPostParams<T> {
-  endpoint: string;
-  data: T;
-  tag?: string;
-}
-
-// export const apiPost = async <T, R>({
-//   endpoint,
-//   data,
-//   tag,
-// }: ApiPostParams<T>): Promise<R> => {
-//   try {
-//     const res = await axios.post<R>(`${envVars.baseUrl}${endpoint}`, data);
-
-//     //  Revalidate cache if tag is provided
-//     if (tag) {
-//       revalidateTag(tag);
-//     }
-
-//     return res.data;
-//   } catch (error: any) {
-//     return error.response?.data;
-//   }
-// };
 
 export async function apiPost({
   endpoint,
