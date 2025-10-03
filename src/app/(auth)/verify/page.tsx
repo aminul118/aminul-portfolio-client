@@ -1,22 +1,24 @@
-import LoginForm from '@/components/modules/authentication/LoginForm';
+import VerifyOTPForm from '@/components/modules/authentication/VerifyOTPForm';
 import generateMetaTags from '@/seo/generateMetaTags';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // >> SEO Start
 export const metadata: Metadata = generateMetaTags({
-  title: 'Login | Aminul',
+  title: 'Verify otp | Aminul',
   description: 'Write Description',
   keywords: 'write keyword not more than 60 words',
-  image: '/seo/shrl-hero-ss.png',
 });
-// >> SEO End
 
-const LoginPage = () => {
+// >> SEO End
+const VerifyOTPPage = () => {
   return (
     <section className="center">
-      <LoginForm className="w-full max-w-sm md:max-w-4xl" />
+      <Suspense fallback={<div>Loading.....</div>}>
+        <VerifyOTPForm />
+      </Suspense>
     </section>
   );
 };
 
-export default LoginPage;
+export default VerifyOTPPage;

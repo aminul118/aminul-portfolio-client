@@ -57,6 +57,22 @@ export const logoutUser = async () => {
 
 export const forgot = async () => {};
 
+export const verify = async (data: { email: string; otp: string }) => {
+  return await apiPost({
+    endpoint: '/otp/verify',
+    tag: 'USER',
+    data,
+  });
+};
+
+export const resendOtp = async (data: { email: string }) => {
+  return await apiPost({
+    endpoint: '/otp/re-send',
+    tag: 'USER',
+    data,
+  });
+};
+
 interface IPayload {
   plainPassword: string;
   token: string;

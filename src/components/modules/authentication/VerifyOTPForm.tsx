@@ -1,6 +1,6 @@
 'use client';
 
-import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
+import { resendOtp, verify } from '@/actions/auth';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
@@ -19,11 +19,8 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from '@/components/ui/input-otp';
-import {
-  useSendOtpMutation,
-  useVerifyOtpMutation,
-} from '@/redux/features/auth/auth.api';
-import validation from '@/validations';
+import { otpValidation } from '@/validations/auth';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -33,15 +30,14 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 const VerifyOTPForm = () => {
-  const [counter, setCounter] = useState(60); // 1 min timer
-  const [sendOTP] = useSendOtpMutation();
-  const [verifyOTP, { isLoading }] = useVerifyOtpMutation();
+  const [counter, setCounter] = useState(1); // 1 min timer
+
   const searchParams = useSearchParams();
   const router = useRouter();
   const email = searchParams.get('email');
 
-  const form = useForm<z.infer<typeof validation.auth.otpValidation>>({
-    resolver: zodResolver(validation.auth.otpValidation),
+  const form = useForm<z.infer<typeof otpValidation>>({
+    resolver: zodResolver(otpValidation),
     defaultValues: {
       otp: '',
     },
@@ -55,17 +51,21 @@ const VerifyOTPForm = () => {
     }
   }, [counter]);
 
-  const onSubmit = async (
-    value: z.infer<typeof validation.auth.otpValidation>,
-  ) => {
+  const onSubmit = async (value: z.infer<typeof otpValidation>) => {
     try {
       if (!email) {
         toast.error('Email Not Found..');
       }
-      const res = await verifyOTP({ email, otp: value.otp }).unwrap();
-      if (res.success) {
-        toast.success(`OTP verified successfully!`);
-        router.push('/user');
+      if (email) {
+        const payload = {
+          email,
+          otp: value.otp,
+        };
+        const res = await verify(payload);
+        if (res.success) {
+          toast.success(`OTP verified successfully!`);
+          router.push('/user');
+        }
       }
     } catch (err: any) {
       toast.error(err?.data?.message || 'Invalid OTP');
@@ -74,9 +74,12 @@ const VerifyOTPForm = () => {
 
   const handleResend = async () => {
     try {
-      const res = await sendOTP({ email }).unwrap();
-      if (res.success) {
-        toast.success(`OTP Send to ${email}`);
+      if (email) {
+        const res = await resendOtp({ email });
+        console.log(res);
+        if (res.success) {
+          toast.success(`OTP Send to ${email}`);
+        }
       }
     } catch (err: any) {
       toast.error(err?.data?.message || 'Error sending OTP');
@@ -86,7 +89,7 @@ const VerifyOTPForm = () => {
 
   return (
     <div data-aos="fade-left" className="flex items-center justify-center">
-      <Card className="w-full max-w-md rounded-2xl shadow-xl">
+      <Card className="w-lg max-w-md rounded-2xl shadow-xl">
         <CardHeader className="flex flex-col items-center space-y-2 pb-2">
           <Link href={'/'}>
             <Logo />
@@ -136,14 +139,8 @@ const VerifyOTPForm = () => {
                 )}
               />
 
-              <Button type="submit" className="w-64" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    Verify OTP <ButtonSpinner />
-                  </>
-                ) : (
-                  'Verify OTP'
-                )}
+              <Button type="submit" className="w-64">
+                Verify
               </Button>
             </form>
           </Form>
