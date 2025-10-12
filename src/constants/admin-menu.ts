@@ -24,7 +24,7 @@ export const adminSidebarMenu: MenuGroup[] = [
       },
       {
         name: 'Projects',
-        url: '/admin/scrolling-texts',
+        url: '/admin/projects',
         icon: SquareChartGantt,
       },
       {
@@ -34,7 +34,7 @@ export const adminSidebarMenu: MenuGroup[] = [
       },
       {
         name: 'Experience',
-        url: '/admin/ai-trainings',
+        url: '/admin/experience',
         icon: Briefcase,
       },
       {
