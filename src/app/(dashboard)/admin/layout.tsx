@@ -1,5 +1,5 @@
-import DashboardBreadcrumb from '@/components/layouts/dashboard/admin/DashboardBreadcrumb ';
-import AdminSidebar from '@/components/layouts/dashboard/admin/admin-sidebar';
+import DashboardBreadcrumb from '@/components/layouts/Admin/DashboardBreadcrumb ';
+import AdminSidebar from '@/components/layouts/Admin/admin-sidebar';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -7,6 +7,7 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { IChildren } from '@/types';
+import { Metadata } from 'next';
 
 const AdminLayout = async ({ children }: IChildren) => {
   return (
@@ -31,3 +32,9 @@ const AdminLayout = async ({ children }: IChildren) => {
 };
 
 export default AdminLayout;
+
+// >> SEO Start
+export const metadata: Metadata = {
+  title: 'Dashboard | Aminul Islam',
+};
+// >> SEO End

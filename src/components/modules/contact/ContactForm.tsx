@@ -56,6 +56,7 @@ const ContactForm = () => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="ml-auto w-full max-w-md space-y-6 xl:max-w-lg"
+          data-aos="fade-left"
         >
           {/* Top row: Name + Email */}
           <div className="grid grid-cols-1 gap-6">

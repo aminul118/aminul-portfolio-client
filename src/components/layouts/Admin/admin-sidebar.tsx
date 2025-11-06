@@ -1,3 +1,4 @@
+import { adminSidebarMenu } from '@/components/layouts/Admin/admin-menu';
 import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
@@ -6,9 +7,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import { adminSidebarMenu } from '@/constants/admin-menu';
 import Link from 'next/link';
-import Logo from '../../Logo';
+import Logo from '../Logo';
 import Menu from './Menu';
 
 const AdminSidebar = () => {
